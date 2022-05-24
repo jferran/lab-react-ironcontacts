@@ -15,10 +15,20 @@ function App() {
 
     setContactsList([...contactsList, randomContact])
   }
+  const handleSortByPopularity = () => {
+    const sorted = [...contactsList].sort((a, b) => a.popularity > b.popularity ? 1 : -1)
+    setContactsList(sorted)
+  }
+  const sortByName = () => {
+    const sorted = [...contactsList].sort((a, b) => a.name.localeCompare(b.name))
+    setContactsList(sorted)
+  }
 
   return (
     <div className="App">
     <button onClick={handleAdd}>Add Random Contact</button>
+    <button onClick={handleSortByPopularity}>Sort by popularity</button>
+    <button onClick={sortByName}>Sort by name</button>
     <table>
     <thead>
       <tr>
