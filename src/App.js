@@ -23,6 +23,11 @@ function App() {
     const sorted = [...contactsList].sort((a, b) => a.name.localeCompare(b.name))
     setContactsList(sorted)
   }
+  const handleDelete = (id) => {
+    const filterArray = contactsList.filter((contact) => contact.id !== id)
+    setContactsList(filterArray)
+
+  }
 
   return (
     <div className="App">
@@ -37,6 +42,7 @@ function App() {
         <th>Popularity</th>
         <th>Won Oscar</th>
         <th>Won Emmy</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -48,6 +54,7 @@ function App() {
         <td>{contact.popularity.toFixed(2)}</td>
         <td>{contact.wonOscar ? '🏆' : '' }</td>
         <td>{contact.wonEmmy ? '🏆' : '' }</td>
+        <td><button onClick={() => handleDelete(contact.id)}>Delete</button></td>
         </tr>
         )
         })}
