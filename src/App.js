@@ -6,12 +6,12 @@ function App() {
   const [ contactsList, setContactsList ] = useState(contacts.slice(0,5))
 
   const handleAdd = () =>{
-    //if(contactsList.length === contacts.length) return;
+    if(contactsList.length === contacts.length) return;
     const randomNumber = Math.floor(Math.random() * contacts.length)
     const randomContact = contacts[randomNumber]
 
-    //const contactsId = contacts.map((contact)=>contact.id)
-    //if(contactsId.includes(randomContact.id)) return handleAdd()
+    const contactsId = contactsList.map((contact)=>contact.id)
+    if(contactsId.includes(randomContact.id)) return handleAdd()
 
     setContactsList([...contactsList, randomContact])
   }
